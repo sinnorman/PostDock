@@ -4,7 +4,7 @@
 
 FROM bitnami/pgpool:4.3.3
 #ARG DOCKERIZE_VERSION=v0.2.0
-
+USER root
 #RUN groupadd -r postgres --gid=999 && useradd -r -g postgres -d /home/postgres  --uid=999 postgres
 
 # grab gosu for easy step-down from root
