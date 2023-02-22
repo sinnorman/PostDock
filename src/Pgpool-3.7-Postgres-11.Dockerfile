@@ -20,7 +20,7 @@ RUN  sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main 
      wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
      apt-get update
 
-RUN  apt-get install -y postgresql-client
+RUN  apt-get install -y postgresql-client-12
 
 
 RUN apt-get -y install pgpool2 libpgpool2 postgresql-pgpool2
