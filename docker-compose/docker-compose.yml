@@ -17,6 +17,7 @@ volumes:
 
 services:
     pgmaster:
+        container_name: pgmaster
         build:
             context: ../src
             dockerfile: Postgres-11-Repmgr-4.0.Dockerfile
@@ -56,6 +57,7 @@ services:
                     - pgmaster
 #<<< Branch 1
     pgslave1:
+        container_name: pgslave1
         build:
             context: ../src
             dockerfile: Postgres-11-Repmgr-4.0.Dockerfile
@@ -81,6 +83,7 @@ services:
 
     # Add more slaves if required
     pgslave2:
+        container_name: pgslave2
         build:
             context: ../src
             dockerfile: Postgres-11-Repmgr-4.0.Dockerfile
@@ -104,6 +107,7 @@ services:
 #>>> Branch 1
 #<<< Branch 2
     pgslave3:
+        container_name: pgslave3
         build:
             context: ../src
             dockerfile: Postgres-11-Repmgr-4.0.Dockerfile
@@ -129,6 +133,7 @@ services:
                     - pgslave3
 
     pgslave4:
+        container_name: pgslave4
         build:
             context: ../src
             dockerfile: Postgres-11-Repmgr-4.0.Dockerfile
@@ -151,6 +156,7 @@ services:
                     - pgslave4
 #>>> Branch 2
     backup:
+        container_name: backup
         build:
             context: ../src
             dockerfile: Barman-2.4-Postgres-11.Dockerfile
@@ -171,6 +177,7 @@ services:
                 aliases:
                     - backup
     pgpool:
+        container_name: pgpool
         build:
             context: ../src
             dockerfile: Pgpool-3.7-Postgres-11.Dockerfile
