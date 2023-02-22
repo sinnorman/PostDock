@@ -6,6 +6,7 @@ cp -f /var/pgpool_configs/pgpool.conf $CONFIG_FILE
 echo ">>> Opening access from all hosts by md5 in $HBA_FILE" #TODO: more configurable?
 echo "host all all 0.0.0.0/0 md5" > $HBA_FILE
 
+echo $PATH
 echo ">>> Adding user $PCP_USER for PCP"
 echo "$PCP_USER:`pg_md5 --config-file $CONFIG_FILE $PCP_PASSWORD`" >> $PCP_FILE
 
