@@ -10,7 +10,7 @@ RUN groupadd -r postgres --gid=999 && useradd -r -g postgres -d /home/postgres  
 # grab gosu for easy step-down from root
 ARG GOSU_VERSION=1.11
 RUN set -eux \
-	&& apt-get update && apt-get install -y --no-install-recommends ca-certificates wget gnupg2 libffi-dev openssh-server gosu && rm -rf /var/lib/apt/lists/*  && \
+	&& apt-get update && apt-get install -y --no-install-recommends ca-certificates wget gnupg2 lsb-release libffi-dev openssh-server gosu && rm -rf /var/lib/apt/lists/*  && \
 	gosu nobody true
 
 COPY ./dockerfile/bin /usr/local/bin/dockerfile
