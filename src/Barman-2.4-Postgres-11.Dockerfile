@@ -18,7 +18,7 @@ RUN  wget -q https://www.postgresql.org/media/keys/ACCC4CF8.asc -O - | apt-key a
      apt-get update && \
      apt-get install -y libffi-dev libssl-dev openssh-server
 
-RUN  apt-get install -y postgresql-client-11
+RUN  apt-get install -y postgresql-client-12
 
 
 RUN install_deb_pkg "http://atalia.postgresql.org/morgue/b/barman/barman_2.4-1.pgdg90+1_all.deb"
