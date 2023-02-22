@@ -17,7 +17,7 @@ RUN  wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-
      apt-get update && \
      apt-get install -y libffi-dev libssl-dev openssh-server
 
-RUN  apt-get install -y postgresql-client-12
+RUN  apt-get install -y postgresql-client
 
 
 RUN apt-get install barman
