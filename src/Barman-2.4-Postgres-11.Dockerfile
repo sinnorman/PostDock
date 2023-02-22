@@ -5,9 +5,9 @@
 FROM golang:1.18-stretch
 
 # grab gosu for easy step-down from root
-ARG GOSU_VERSION=1.11
+ARG GOSU_VERSION=1.18
 RUN set -eux \
-	&& apt-get update && apt-get install -y --no-install-recommends ca-certificates libpq5 wget gnupg2 gosu && rm -rf /var/lib/apt/lists/*  && \
+	&& apt-get update && apt-get install -y --no-install-recommends ca-certificates libpq5 wget curl gnupg2 gosu && rm -rf /var/lib/apt/lists/*  && \
 	gosu nobody true
 
 COPY ./dockerfile/bin /usr/local/bin/dockerfile
