@@ -2,10 +2,10 @@
 ##                         AUTO-GENERATED FILE                          ##
 ##########################################################################
 
-FROM golang:1.11-stretch
+FROM golang:1.18-stretch
 
 # grab gosu for easy step-down from root
-ARG GOSU_VERSION=1.11
+ARG GOSU_VERSION=1.18
 RUN set -eux \
 	&& apt-get update && apt-get install -y --no-install-recommends ca-certificates libpq5 wget curl gnupg2 gosu && rm -rf /var/lib/apt/lists/*  && \
 	gosu nobody true
@@ -14,7 +14,6 @@ COPY ./dockerfile/bin /usr/local/bin/dockerfile
 RUN chmod -R +x /usr/local/bin/dockerfile && ln -s /usr/local/bin/dockerfile/functions/* /usr/local/bin/
 
 RUN  wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
-     sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list' && \
      apt-get update && \
      apt-get install -y libffi-dev libssl-dev openssh-server
 
