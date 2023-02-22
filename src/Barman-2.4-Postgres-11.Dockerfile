@@ -2,7 +2,7 @@
 ##                         AUTO-GENERATED FILE                          ##
 ##########################################################################
 
-FROM golang:1.11-stretch
+FROM golang:1.18-stretch
 
 # grab gosu for easy step-down from root
 ARG GOSU_VERSION=1.11
@@ -13,15 +13,15 @@ RUN set -eux \
 COPY ./dockerfile/bin /usr/local/bin/dockerfile
 RUN chmod -R +x /usr/local/bin/dockerfile && ln -s /usr/local/bin/dockerfile/functions/* /usr/local/bin/
 
-RUN  wget -q https://www.postgresql.org/media/keys/ACCC4CF8.asc -O - | apt-key add - && \
-     sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main" >> /etc/apt/sources.list.d/pgdg.list' && \
+RUN  curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg && \
+     sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" |sudo tee  /etc/apt/sources.list.d/pgdg.list' && \
      apt-get update && \
      apt-get install -y libffi-dev libssl-dev openssh-server
 
 RUN  apt-get install -y postgresql-client-12
 
 
-RUN install_deb_pkg "http://atalia.postgresql.org/morgue/b/barman/barman_2.4-1.pgdg90+1_all.deb"
+RUN apt-get install barman
 
 RUN apt-get -y install cron
 ADD barman/crontab /etc/cron.d/barman
