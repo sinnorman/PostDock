@@ -2,10 +2,10 @@
 ##                         AUTO-GENERATED FILE                          ##
 ##########################################################################
 
-FROM golang:1.18-stretch
+FROM golang:1.11-stretch
 
 # grab gosu for easy step-down from root
-ARG GOSU_VERSION=1.18
+ARG GOSU_VERSION=1.11
 RUN set -eux \
 	&& apt-get update && apt-get install -y --no-install-recommends ca-certificates libpq5 wget curl gnupg2 gosu && rm -rf /var/lib/apt/lists/*  && \
 	gosu nobody true
