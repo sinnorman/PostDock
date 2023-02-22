@@ -2,7 +2,7 @@
 ##                         AUTO-GENERATED FILE                          ##
 ##########################################################################
 
-FROM ubuntu:bionic-20200403
+FROM golang:1.20.1
 ARG DOCKERIZE_VERSION=v0.2.0
 
 RUN groupadd -r postgres --gid=999 && useradd -r -g postgres -d /home/postgres  --uid=999 postgres
@@ -20,7 +20,7 @@ RUN  sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main"
      wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
      apt-get update
 
-RUN  apt-get install -y postgresql-client-12
+RUN  apt-get install -y postgresql-client
 
 
 RUN apt-get -y install pgpool2 libpgpool2 postgresql-pgpool2
