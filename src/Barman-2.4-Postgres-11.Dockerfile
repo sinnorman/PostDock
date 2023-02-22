@@ -10,8 +10,8 @@ RUN set -eux \
 	&& apt-get update && apt-get install -y --no-install-recommends ca-certificates libpq5 wget curl gnupg2 gosu && rm -rf /var/lib/apt/lists/*  && \
 	gosu nobody true
 
-COPY ./dockerfile/bin /usr/local/bin/dockerfile
-RUN chmod -R +x /usr/local/bin/dockerfile && ln -s /usr/local/bin/dockerfile/functions/* /usr/local/bin/
+#COPY ./dockerfile/bin /usr/local/bin/dockerfile
+#RUN chmod -R +x /usr/local/bin/dockerfile && ln -s /usr/local/bin/dockerfile/functions/* /usr/local/bin/
 
 RUN  wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
      apt-get update && \

@@ -7,8 +7,8 @@ FROM postgres:13
 RUN apt-get update --fix-missing && \
     apt-get install -y postgresql-server-dev-$PG_MAJOR wget openssh-server barman-cli
 
-COPY ./dockerfile/bin /usr/local/bin/dockerfile
-RUN chmod -R +x /usr/local/bin/dockerfile && ln -s /usr/local/bin/dockerfile/functions/* /usr/local/bin/
+#COPY ./dockerfile/bin /usr/local/bin/dockerfile
+#RUN chmod -R +x /usr/local/bin/dockerfile && ln -s /usr/local/bin/dockerfile/functions/* /usr/local/bin/
 
 
 RUN apt-get -y install repmgr
