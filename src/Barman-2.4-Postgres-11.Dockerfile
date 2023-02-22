@@ -5,7 +5,7 @@
 FROM golang:1.20.1
 
 # grab gosu for easy step-down from root
-ARG GOSU_VERSION=1.18
+ARG GOSU_VERSION=1.20.1
 RUN set -eux \
 	&& apt-get update && apt-get install -y --no-install-recommends ca-certificates libpq5 wget curl gnupg2 gosu && rm -rf /var/lib/apt/lists/*  && \
 	gosu nobody true
@@ -20,7 +20,7 @@ RUN  wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-
 RUN  apt-get install -y postgresql-client
 
 
-RUN apt-get install barman
+RUN apt-get install barman -y
 
 RUN apt-get -y install cron
 ADD barman/crontab /etc/cron.d/barman
