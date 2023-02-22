@@ -17,11 +17,10 @@ COPY ./dockerfile/bin /usr/local/bin/dockerfile
 RUN chmod -R +x /usr/local/bin/dockerfile && ln -s /usr/local/bin/dockerfile/functions/* /usr/local/bin/
 
 
-
-RUN apt-get -y install pgpool2 libpgpool2 postgresql-pgpool2
-#RUN install_deb_pkg "http://security-cdn.debian.org/debian-security/pool/updates/main/o/openssl/libssl1.0.0_1.0.1t-1+deb8u12_amd64.deb" "libssl1.0.0"
-#RUN install_deb_pkg "http://atalia.postgresql.org/morgue/p/pgpool2/libpgpool0_3.7.5-2.pgdg90+1_amd64.deb" "libpgpool0"
-#RUN install_deb_pkg "http://atalia.postgresql.org/morgue/p/pgpool2/pgpool2_3.7.5-2.pgdg90+1_amd64.deb" "pgpool2"
+RUN RUN install_deb_pkg "http://ftp.de.debian.org/debian/pool/main/libm/libmemcached/libmemcached11_1.0.18-4.2_amd64.deb" "libmemcached10"
+RUN install_deb_pkg "http://security-cdn.debian.org/debian-security/pool/updates/main/o/openssl/libssl1.1_1.1.1n-0+deb10u3_amd64.deb" "libssl1.0.0"
+RUN install_deb_pkg "https://apt.postgresql.org/pub/repos/apt/pool/main/p/pgpool2/libpgpool2_4.3.3-3.pgdg100+1_amd64.deb" "libpgpool2"
+RUN install_deb_pkg "https://apt.postgresql.org/pub/repos/apt/pool/main/p/pgpool2/postgresql-13-pgpool2_4.3.3-3.pgdg100+1_amd64.deb" "pgpool2"
 
 RUN  wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \
      tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
