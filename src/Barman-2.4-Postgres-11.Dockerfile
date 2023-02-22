@@ -13,9 +13,7 @@ RUN set -eux \
 COPY ./dockerfile/bin /usr/local/bin/dockerfile
 RUN chmod -R +x /usr/local/bin/dockerfile && ln -s /usr/local/bin/dockerfile/functions/* /usr/local/bin/
 
-RUN  curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg && \
-     sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" |sudo tee  /etc/apt/sources.list.d/pgdg.list' && \
-     apt-get update && \
+RUN  apt-get update && \
      apt-get install -y libffi-dev libssl-dev openssh-server
 
 RUN  apt-get install -y postgresql-client-12
