@@ -17,7 +17,9 @@ volumes:
 
 services:
     pgmaster:
-        image: bitnami/postgresql-repmgr:12.14.0
+        build:
+            context: ../src
+            dockerfile: Postgres-11-Repmgr-4.0.Dockerfile
         environment:
             NODE_ID: 1 # Integer number of node (not required if can be extracted from NODE_NAME var, e.g. node-45 => 1045)
             NODE_NAME: node1 # Node name
@@ -54,7 +56,9 @@ services:
                     - pgmaster
 #<<< Branch 1
     pgslave1:
-        image: bitnami/postgresql-repmgr:12.14.0
+        build:
+            context: ../src
+            dockerfile: Postgres-11-Repmgr-4.0.Dockerfile
         environment:
             NODE_ID: 2
             NODE_NAME: node2
@@ -77,7 +81,9 @@ services:
 
     # Add more slaves if required
     pgslave2:
-        image: bitnami/postgresql-repmgr:12.14.0
+        build:
+            context: ../src
+            dockerfile: Postgres-11-Repmgr-4.0.Dockerfile
         environment:
             NODE_ID: 3
             NODE_NAME: node3
@@ -98,7 +104,9 @@ services:
 #>>> Branch 1
 #<<< Branch 2
     pgslave3:
-        image: bitnami/postgresql-repmgr:12.14.0
+        build:
+            context: ../src
+            dockerfile: Postgres-11-Repmgr-4.0.Dockerfile
         environment:
             NODE_ID: 4
             NODE_NAME: node4
@@ -121,7 +129,9 @@ services:
                     - pgslave3
 
     pgslave4:
-        image: bitnami/postgresql-repmgr:12.14.0
+        build:
+            context: ../src
+            dockerfile: Postgres-11-Repmgr-4.0.Dockerfile
         environment:
             NODE_ID: 5
             NODE_NAME: node5
@@ -161,7 +171,9 @@ services:
                 aliases:
                     - backup
     pgpool:
-        image: bitnami/pgpool:4.4.2
+        build:
+            context: ../src
+            dockerfile: Pgpool-3.7-Postgres-11.Dockerfile
         environment:
             PCP_USER: pcp_user
             PCP_PASSWORD: pcp_pass

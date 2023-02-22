@@ -2,7 +2,7 @@
 ##                         AUTO-GENERATED FILE                          ##
 ##########################################################################
 
-FROM golang:1.18-stretch
+FROM golang:1.20.1
 
 # grab gosu for easy step-down from root
 ARG GOSU_VERSION=1.18
