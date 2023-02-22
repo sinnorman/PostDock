@@ -2,7 +2,7 @@
 ##                         AUTO-GENERATED FILE                          ##
 ##########################################################################
 
-FROM debian:stretch
+FROM ubuntu:bionic-20200403
 ARG DOCKERIZE_VERSION=v0.2.0
 
 RUN groupadd -r postgres --gid=999 && useradd -r -g postgres -d /home/postgres  --uid=999 postgres
@@ -16,7 +16,7 @@ RUN set -eux \
 COPY ./dockerfile/bin /usr/local/bin/dockerfile
 RUN chmod -R +x /usr/local/bin/dockerfile && ln -s /usr/local/bin/dockerfile/functions/* /usr/local/bin/
 
-RUN  sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list' && \
+RUN  sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main" > /etc/apt/sources.list' && \
      wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
      apt-get update
 
