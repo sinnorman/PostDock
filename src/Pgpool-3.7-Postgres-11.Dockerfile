@@ -2,7 +2,7 @@
 ##                         AUTO-GENERATED FILE                          ##
 ##########################################################################
 
-FROM postgres:13.10-bullseye
+FROM postgres:13-bullseye
 ARG DOCKERIZE_VERSION=v0.2.0
 
 #RUN groupadd -r postgres --gid=999 && useradd -r -g postgres -d /home/postgres  --uid=999 postgres
